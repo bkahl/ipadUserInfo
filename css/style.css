@@ -1,0 +1,114 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  background: rgba(0,0,0,.5);
+  line-height: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  font: 11px "HelveticaNeue-Light", "Helvetica Neue Light", helvetica, arial, sans-serif;
+}
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+#container{
+  color: #fff;
+}
+#container #overlay{
+  margin: 0 200px;
+  background: url(../images/bg-pattern.png);
+  position: relative;
+}
+
+#container #overlay .left-stitch{
+  width: 13px;
+  background: url(../images/left-stitch.png) repeat-y;
+  position: absolute;
+  left: 0;
+}
+
+#container #overlay .right-stitch{
+  width: 11px;
+  background: url(../images/right-stitch.png) repeat-y;
+  position: absolute;
+  right: 0;
+}
+
+#container #overlay .header{
+  height: 53px;
+  background: url(../images/header-stitch.png) repeat-x;
+  border-top: 1px solid #3d3d3d;
+  border-bottom: 1px solid #3d3d3d;
+  position: relative;
+  top: 0px;
+  z-index: 2;
+}
+
+#container #overlay .header .save-btn{
+  top: 7px;
+  right: 8px;
+  width: 60px;
+  height: 33px;
+  background: url(../images/save-btn.png) no-repeat;
+  position: absolute;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,0);
+}
+
+#container #overlay .header .cancel-btn{
+  top: 7px;
+  left: 8px;
+  width: 60px;
+  height: 33px;
+  background: url(../images/cancel-btn.png) no-repeat;
+  position: absolute;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,0);
+}
+
+#container #overlay .header .cancel-btn:hover,
+#container #overlay .header .save-btn:hover{
+  border: 1px solid rgba(97,156,203,1);
+}
+
+#container #overlay .content{
+  position: relative;
+/*  top: 55px;*/
+  padding: 27px 25px;
+}

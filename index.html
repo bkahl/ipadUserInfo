@@ -1,0 +1,79 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+  	<title>iPad Account Info</title>
+  	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+  	<link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    
+    <div id="container">   
+      <div id="overlay">
+        <div class="header">
+          <div class="cancel-btn"></div>
+          <div class="save-btn"></div>
+        </div>
+        <div class="left-stitch"></div>
+        <div class="right-stitch"></div>
+        <div class="content">
+          asdfasdfasdfasdfasdfsad
+
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+      function getStyle(oElm, strCssRule){
+      	var strValue = "";
+      	if(document.defaultView && document.defaultView.getComputedStyle){
+      		strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
+      	}
+      	else if(oElm.currentStyle){
+      		strCssRule = strCssRule.replace(/\-(\w)/g, function (strMatch, p1){
+      			return p1.toUpperCase();
+      		});
+      		strValue = oElm.currentStyle[strCssRule];
+      	}
+      	return strValue;
+      }
+      
+  		$().ready(function() {
+  		  var windowWidth = $(window).width(),
+  		      style = getStyle(document.getElementById("overlay"), "margin"),
+  		      overlayWidth = style.split('px'),
+  		      overlayWidthLength = overlayWidth.length-1, 
+  		      oLW0, oLW1, oLW3;
+  		  
+  		  $(".content").ipadContent({
+  		    type: 'default',
+  		    howMany: 2
+  		  });
+  		  
+  		  var overlayHeight = document.getElementById("overlay").clientHeight;
+  		  
+  		  $('.left-stitch').css('height',overlayHeight).css('top','0').css('z-index','1');
+  		  $('.right-stitch').css('height',overlayHeight).css('top','0').css('z-index','1');
+  		      
+  		      if(overlayWidthLength === 4) {
+  		        oLW1 = overlayWidth[1]*1;
+  		        oLW3 = overlayWidth[3]*1;
+  		        overlayWidth = windowWidth-(oLW1+oLW3);
+  		        $('#overlay').css('width',overlayWidth);}
+  		      if(overlayWidthLength === 3 || overlayWidthLength === 2) {
+  		        oLW1 = overlayWidth[1]*1;
+  		        overlayWidth = windowWidth-(oLW1*2);
+  		        $('#overlay').css('width',overlayWidth);}
+  		      if(overlayWidthLength === 1) {
+  		        oLW0 = overlayWidth[0]*1;
+  		        overlayWidth = windowWidth-(oLW0*2);
+  		        $('#overlay').css('width',overlayWidth);}
+  		  
+  		});
+  	</script>
+  	
+  </body>
+
+</html>
