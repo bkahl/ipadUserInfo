@@ -16,16 +16,23 @@
         </div>
         <div class="left-stitch"></div>
         <div class="right-stitch"></div>
-        <div class="content">
-          asdfasdfasdfasdfasdfsad
-
-        </div>
+        <div class="content"></div>
       </div>
     </div>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript">
+    
+      function FirstNameChange() {
+          var fieldsetTag = $(this).parent().parent().find('legend span.C_FirstName_display');
+          fieldsetTag.html($(this).val());
+      }
+      function LastNameChange() {
+          var fieldsetTag = $(this).parent().parent().find('legend span.C_LastName_display');
+          fieldsetTag.html($(this).val());
+      }
+      
       function getStyle(oElm, strCssRule){
       	var strValue = "";
       	if(document.defaultView && document.defaultView.getComputedStyle){
@@ -47,10 +54,25 @@
   		      overlayWidthLength = overlayWidth.length-1, 
   		      oLW0, oLW1, oLW3;
   		  
+  		  /****************************************************************************
+  		  *
+  		  * Where the Data for the forms is set...
+  		  *
+  		  ****************************************************************************/
+  		  
   		  $(".content").ipadContent({
-  		    type: 'default',
-  		    howMany: 2
+  		    fieldset: [
+  		      { firstName: 'Brad', lastName: 'Kahl', email: 'brad.kahl@eloqua.com'},
+  		      { firstName: 'James', lastName: 'Bond', email: 'james.bond@eloqua.com'},
+  		      { firstName: 'Austin', lastName: 'Jones', email: 'austin.jones@eloqua.com'}
+  		    ]
   		  });
+  		  
+  		  /****************************************************************************
+  		  *
+  		  * Where the Data for the forms is set...
+  		  *
+  		  ****************************************************************************/
   		  
   		  var overlayHeight = document.getElementById("overlay").clientHeight;
   		  
@@ -70,6 +92,45 @@
   		        oLW0 = overlayWidth[0]*1;
   		        overlayWidth = windowWidth-(oLW0*2);
   		        $('#overlay').css('width',overlayWidth);}
+  		        
+  		  
+  		  $.each($('.firstName').bind("keyup", FirstNameChange), FirstNameChange);
+  		  $.each($('.lastName').bind("keyup", LastNameChange), LastNameChange);
+  		  
+  		  $('.firstName').keyup(function() {
+          var parentId = this.parentNode.id,
+              tabWidth = $('.tab').width(),
+              firstNameWidth = $('legend div.' + parentId + ' span.C_FirstName_display').width(),
+              lastNameWidth = $('legend div.' + parentId + ' span.C_LastName_display').width(),
+              totalWidth = (firstNameWidth+lastNameWidth)*1;
+          
+          //alert('Parent ID : ' + parentId + ", fNameW : " + firstNameWidth + ", lNameW : " + lastNameWidth);
+          
+          $('.tab.'+parentId).css('width',totalWidth+3);
+          
+        }).keydown(function(event) {
+          if (event.which === 13) {
+            event.preventDefault();
+          }  
+        });
+        
+        $('.lastName').keyup(function() {
+          var parentId = this.parentNode.id,
+              tabWidth = $('.tab').width(),
+              firstNameWidth = $('legend div.' + parentId + ' span.C_FirstName_display').width(),
+              lastNameWidth = $('legend div.' + parentId + ' span.C_LastName_display').width(),
+              totalWidth = (firstNameWidth+lastNameWidth)*1;
+          
+          //alert('Parent ID : ' + parentId + ", fNameW : " + firstNameWidth + ", lNameW : " + lastNameWidth);
+          
+          $('.tab.'+parentId).css('width',totalWidth+3);
+          
+        }).keydown(function(event) {
+          if (event.which === 13) {
+            event.preventDefault();
+          }  
+        });
+
   		  
   		});
   	</script>
